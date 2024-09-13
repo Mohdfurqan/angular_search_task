@@ -1,0 +1,22 @@
+<div class="parent">
+  <h2>Cities</h2>
+  <div class="search-bar">
+    <input [(ngModel)]="searchInput" placeholder="Search City" class="search-input" />
+    <span class="keyboard-shortcut">Ctrl + /</span>
+  </div>
+  <table className="custom-table">
+    <tr>
+      <th>#</th>
+      <th>Place Name</th>
+      <th>Country</th>
+    </tr>
+    <tr *ngFor="let item of citiesData | search: searchInput; let i=index">
+      <td>{{ i+1 }}</td>
+      <td>{{ item.name }}</td>
+      <td><img src="https://flagsapi.com/{{item.countryCode}}/shiny/16.png">&nbsp;&nbsp;{{ item.country }}</td>
+    </tr>
+  </table>
+  <div class="paginate">
+    Number of records: <input [(ngModel)]="paginateInput" placeholder="Search City" type="number" (input)="onPaginationChange()"/>
+  </div>
+</div>
